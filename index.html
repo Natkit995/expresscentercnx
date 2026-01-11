@@ -22,17 +22,21 @@
             </div>
             <ul class="nav-links">
                 <li><a href="#" data-i18n="nav.home">หน้าแรก</a></li>
-                <li><a href="#services" data-i18n="nav.services">บริการของเรา</a></li>
+                <li><a href="/services.html" data-i18n="nav.services">บริการของเรา</a></li>
                 <li><a href="#features" data-i18n="nav.features">จุดเด่น</a></li>
                 <li><a href="#contact" data-i18n="nav.contact">ติดต่อเรา</a></li>
                 <li><a href="about.html" data-i18n="nav.about">เกี่ยวกับเรา</a></li>
                 <li class="nav-item dropdown">
-                    <button class="dropdown-toggle" id="termsToggle" aria-haspopup="true" aria-expanded="false" aria-controls="termsMenu">
-                        <span data-i18n="nav.terms"><a href="content.html"></a>เงื่อนไขและข้อกำหนด</span> <i class="fas fa-caret-down" aria-hidden="true"></i>
+                    <button class="dropdown-toggle" id="termsToggle" aria-haspopup="true" aria-expanded="false"
+                        aria-controls="termsMenu">
+                        <span data-i18n="nav.terms"><a href="content.html"></a>เงื่อนไขและข้อกำหนด</span> <i
+                            class="fas fa-caret-down" aria-hidden="true"></i>
                     </button>
                     <ul class="dropdown-menu" id="termsMenu" role="menu" aria-labelledby="termsToggle">
-                        <li role="none"><a role="menuitem" href="terms.html" data-i18n="dropdown.terms">ข้อกำหนดและเงื่อนไขการใช้งาน (Terms & Conditions)</a></li>
-                        <li role="none"><a role="menuitem" href="privacy-policy.html" data-i18n="dropdown.privacy">นโยบายความเป็นส่วนตัว</a></li>
+                        <li role="none"><a role="menuitem" href="terms.html"
+                                data-i18n="dropdown.terms">ข้อกำหนดและเงื่อนไขการใช้งาน (Terms & Conditions)</a></li>
+                        <li role="none"><a role="menuitem" href="privacy-policy.html"
+                                data-i18n="dropdown.privacy">นโยบายความเป็นส่วนตัว</a></li>
                     </ul>
                 </li>
             </ul>
@@ -103,14 +107,15 @@
                     </div>
 
                     <button id="mainTrackBtn" class="btn btn-primary" disabled>
-                        <i class="fas fa-search" aria-hidden="true"></i> <span data-i18n="tracking.button">ค้นหาพัสดุ</span>
+                        <i class="fas fa-search" aria-hidden="true"></i> <span
+                            data-i18n="tracking.button">ค้นหาพัสดุ</span>
                     </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <hero class="slider">
+    <section class="slider" aria-label="Hero Slider">
         <button class="prev" style="color: var(--secondary-color);">&#10094;</button>
         <div class="slide slide-1">
             <img src="assets/pro.png" alt="Delivery">
@@ -126,7 +131,7 @@
         </div>
         <button class="next" style="color: var(--secondary-color);">&#10095;</button>
         <div class="dots-container"></div>
-    </hero>
+    </section>
 
 
     <section id="services" class="section-padding container">
@@ -192,12 +197,135 @@
         </div>
     </section>
 
+    <section id="packing-guide" class="section-padding packing-guide-section">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-i18n="packing.title">วิธีแพ็คพัสดุอย่างปลอดภัย</h2>
+                <p data-i18n="packing.desc">ขั้นตอนง่ายๆ เพื่อให้พัสดุของคุณถึงปลายทางอย่างสมบูรณ์</p>
+            </div>
+            <div class="packing-steps">
+                <div class="packing-step">
+                    <div class="step-number">1</div>
+                    <div class="step-icon"><i class="fas fa-box-open"></i></div>
+                    <h3 data-i18n="packing.step1.title">เลือกกล่องที่เหมาะสม</h3>
+                    <p data-i18n="packing.step1.desc">ใช้กล่องที่แข็งแรงและขนาดพอดีกับสินค้า ไม่ควรเหลือที่ว่างมากเกินไป
+                    </p>
+                </div>
+                <!-- Arrow Divider -->
+                <div class="step-arrow"><i class="fas fa-chevron-right"></i></div>
+
+                <div class="packing-step">
+                    <div class="step-number">2</div>
+                    <div class="step-icon"><i class="fas fa-wine-glass-alt"></i></div>
+                    <h3 data-i18n="packing.step2.title">ห่อหุ้มกันกระแทก</h3>
+                    <p data-i18n="packing.step2.desc">ห่อสินค้าด้วยบับเบิ้ลหรือวัสดุกันกระแทก โดยเฉพาะสินค้าแตกหักง่าย
+                    </p>
+                </div>
+                <!-- Arrow Divider -->
+                <div class="step-arrow"><i class="fas fa-chevron-right"></i></div>
+
+                <div class="packing-step">
+                    <div class="step-number">3</div>
+                    <div class="step-icon"><i class="fas fa-box"></i></div>
+                    <h3 data-i18n="packing.step3.title">ปิดกล่องให้แน่นหนา</h3>
+                    <p data-i18n="packing.step3.desc">ปิดผนึกกล่องด้วยเทปกาวคุณภาพดี แปะให้เป็นรูปตัว H
+                        ทั้งด้านบนและล่าง</p>
+                </div>
+                <!-- Arrow Divider -->
+                <div class="step-arrow"><i class="fas fa-chevron-right"></i></div>
+
+                <div class="packing-step">
+                    <div class="step-number">4</div>
+                    <div class="step-icon"><i class="fas fa-file-signature"></i></div>
+                    <h3 data-i18n="packing.step4.title">จ่าหน้าชัดเจน</h3>
+                    <p data-i18n="packing.step4.desc">เขียนชื่อ-ที่อยู่ ผู้รับและผู้ส่งให้ชัดเจน
+                        พร้อมเบอร์โทรศัพท์ที่ติดต่อได้</p>
+                </div>
+            </div>
+
+            <!-- Divider for Subsections -->
+            <div style="margin: 50px 0; border-top: 1px dashed #ddd;"></div>
+
+            <!-- Large Item Packing Guide -->
+            <div class="section-title">
+                <h2 data-i18n="packing.large.title">วิธีแพ็คของชิ้นใหญ่ (เฟอร์นิเจอร์/เครื่องใช้ไฟฟ้า)</h2>
+                <p data-i18n="packing.large.desc">เทคนิคการแพ็คสินค้าขนาดใหญ่ให้ปลอดภัยตลอกการขนส่ง</p>
+            </div>
+            <div class="packing-steps">
+                <div class="packing-step">
+                    <div class="step-number">1</div>
+                    <div class="step-icon"><i class="fas fa-tools"></i></div>
+                    <h3 data-i18n="packing.large.step1.title">ถอดชิ้นส่วน</h3>
+                    <p data-i18n="packing.large.step1.desc">ถอดชิ้นส่วนที่ยื่นออกมาได้ เช่น ขาโต๊ะ หรือล้อ
+                        เพื่อลดขนาดและป้องกันการหัก</p>
+                </div>
+                <!-- Arrow Divider -->
+                <div class="step-arrow"><i class="fas fa-chevron-right"></i></div>
+
+                <div class="packing-step">
+                    <div class="step-number">2</div>
+                    <div class="step-icon"><i class="fas fa-layer-group"></i></div>
+                    <h3 data-i18n="packing.large.step2.title">ห่อหุ้มมุมและขอบ</h3>
+                    <p data-i18n="packing.large.step2.desc">ใช้กระดาษลูกฟูกหรือโฟมกันกระแทกหุ้มตามมุมและขอบต่างๆ
+                        ให้หนาแน่น</p>
+                </div>
+                <!-- Arrow Divider -->
+                <div class="step-arrow"><i class="fas fa-chevron-right"></i></div>
+
+                <div class="packing-step">
+                    <div class="step-number">3</div>
+                    <div class="step-icon"><i class="fas fa-dolly-flatbed"></i></div>
+                    <h3 data-i18n="packing.large.step3.title">รัดให้แน่นหนา</h3>
+                    <p data-i18n="packing.large.step3.desc">ใช้ฟิล์มยืดพันรอบตัวสินค้าให้แน่น
+                        เพื่อป้องกันรอยขีดข่วนและฝุ่น</p>
+                </div>
+            </div>
+
+            <!-- Divider for Subsections -->
+            <div style="margin: 50px 0; border-top: 1px dashed #ddd;"></div>
+
+            <!-- Fruit Packing Guide -->
+            <div class="section-title">
+                <h2 data-i18n="packing.fruit.title">วิธีแพ็คผลไม้สด</h2>
+                <p data-i18n="packing.fruit.desc">ส่งผลไม้ให้ถึงมือผู้รับอย่างสดใหม่ ไม่ช้ำ ไม่เน่าเสีย</p>
+            </div>
+            <div class="packing-steps">
+                <div class="packing-step">
+                    <div class="step-number">1</div>
+                    <div class="step-icon"><i class="fas fa-apple-alt"></i></div>
+                    <h3 data-i18n="packing.fruit.step1.title">คัดเลือกผลไม้</h3>
+                    <p data-i18n="packing.fruit.step1.desc">เลือกผลที่สดใหม่ ผิวสวย ไม่สุกงอมจนเกินไป และไม่มีรอยช้ำ</p>
+                </div>
+                <!-- Arrow Divider -->
+                <div class="step-arrow"><i class="fas fa-chevron-right"></i></div>
+
+                <div class="packing-step">
+                    <div class="step-number">2</div>
+                    <div class="step-icon"><i class="fas fa-egg"></i></div>
+                    <h3 data-i18n="packing.fruit.step2.title">ห่อรายผล</h3>
+                    <p data-i18n="packing.fruit.step2.desc">ห่อผลไม้ทีละลูกด้วยโฟมตาข่าย เพื่อลดการกระทบกระเทือน</p>
+                </div>
+                <!-- Arrow Divider -->
+                <div class="step-arrow"><i class="fas fa-chevron-right"></i></div>
+
+                <div class="packing-step">
+                    <div class="step-number">3</div>
+                    <div class="step-icon"><i class="fas fa-boxes"></i></div>
+                    <h3 data-i18n="packing.fruit.step3.title">เรียงใส่กล่องเจาะรู</h3>
+                    <p data-i18n="packing.fruit.step3.desc">เรียงใส่กล่องผลไม้ที่มีรูระบายอากาศ ไม่ควรซ้อนกันเกิน 2-3
+                        ชั้น</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="section-padding container" style="text-align: center;">
         <div class="section-title">
             <h2 data-i18n="cta.title">พร้อมเริ่มส่งของกับเราหรือยัง?</h2>
             <p data-i18n="cta.desc">ขอใบเสนอราคา หรือปรึกษาผู้เชี่ยวชาญของเราได้ฟรี</p>
         </div>
-        <button class="btn btn-primary" style="font-size: 1.2rem;"><span data-i18n="cta.button">แอดไลน์สอบถามราคาแต่ละขนส่ง</span>
+        <button class="btn btn-primary" style="font-size: 1.2rem;"><span
+                data-i18n="cta.button">แอดไลน์สอบถามราคาแต่ละขนส่ง</span>
             </span>
             <i class="fas fa-arrow-right" aria-hidden="true"></i></button>
 
@@ -219,7 +347,8 @@
                         <div class="info-text">
                             <h3>ที่อยู่ร้านค้า</h3>
                             <p>159/3 ถนนช้างเผือก ตำบลศรีภูมิ อำเภอเมือง<br>จังหวัดเชียงใหม่ 50200</p>
-                            <a href="https://maps.app.goo.gl/BWD4PpFzVNZP4gYw8" target="_blank" rel="noopener noreferrer" class="direction-link">
+                            <a href="https://maps.app.goo.gl/BWD4PpFzVNZP4gYw8" target="_blank"
+                                rel="noopener noreferrer" class="direction-link">
                                 <i class="fas fa-location-arrow" aria-hidden="true"></i>
                                 <span data-i18n="direction.link">ขอเส้นทาง</span>
                             </a>
@@ -259,13 +388,15 @@
 
                 <div class="map-frame">
                     <!-- Embedded map focused on the store address -->
-                    <iframe src="https://www.google.com/maps?q=159/3%20ถนนช้างเผือก%20ตำบลศรีภูมิ%20อำเภอเมือง%20จังหวัดเชียงใหม่%2050200&output=embed"
-                        width="100%" height="100%" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                        aria-label="Map to Express Center Logistics">
+                    <iframe
+                        src="https://www.google.com/maps?q=159/3%20ถนนช้างเผือก%20ตำบลศรีภูมิ%20อำเภอเมือง%20จังหวัดเชียงใหม่%2050200&output=embed"
+                        width="100%" height="100%" style="border:0;" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade" aria-label="Map to Express Center Logistics">
                     </iframe>
 
                     <!-- Floating button to open the Maps short link (directions) -->
-                    <a class="map-open-btn" href="https://maps.app.goo.gl/BWD4PpFzVNZP4gYw8" target="_blank" rel="noopener noreferrer">
+                    <a class="map-open-btn" href="https://maps.app.goo.gl/BWD4PpFzVNZP4gYw8" target="_blank"
+                        rel="noopener noreferrer">
                         <i class="fas fa-location-arrow" aria-hidden="true"></i>
                         <span data-i18n="direction.link">ขอเส้นทาง</span>
                     </a>
@@ -279,8 +410,9 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <div class="logo" style="color: white; margin-bottom: 20px;">
-                        <i class="fas fa-truck-fast" style="color: var(--secondary-color);" aria-hidden="true"></i> Express Center
-                        
+                        <i class="fas fa-truck-fast" style="color: var(--secondary-color);" aria-hidden="true"></i>
+                        Express Center
+
                     </div>
                     <p>มุ่งมั่นให้บริการขนส่งที่ดีที่สุด เพื่อขับเคลื่อนธุรกิจของคุณไปข้างหน้า</p>
                 </div>
@@ -299,7 +431,8 @@
                 <div class="footer-col">
                     <h4>ติดต่อเรา</h4>
                     <ul>
-                        <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i> 159/3 ถนนช้างเผือก ตำบลศรีภูมิ อำเภอเมือง
+                        <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i> 159/3 ถนนช้างเผือก ตำบลศรีภูมิ
+                            อำเภอเมือง
                             จังหวัดเชียงใหม่ 50200</li>
                         <li><i class="fas fa-phone" aria-hidden="true"></i> 0988795261 </li>
                         <li><i class="fas fa-envelope" aria-hidden="true"></i> expresscentercnx65@gmail.com</li>
@@ -310,13 +443,15 @@
             <!-- Footer disclaimer -->
             <div class="footer-disclaimer">
                 <p data-i18n="disclaimer.logo">“โลโก้เป็นเครื่องหมายการค้าของแต่ละบริษัท ใช้เพื่อการอ้างอิงเท่านั้น”</p>
-                <p data-i18n="disclaimer.owner">เว็บไซต์นี้เป็นศูนย์รวมบริการขนส่ง ไม่ได้เป็นเจ้าของหรือดำเนินงานโดยบริษัทขนส่งใดโดยตรง</p>
-                <p data-i18n="disclaimer.purpose">เว็บไซต์นี้ ทำมาเพื่อ อำนวยความสะดวกให้ลูกค้าเช็คเลขพัสดุ เท่านั้น.</p>
+                <p data-i18n="disclaimer.owner">เว็บไซต์นี้เป็นศูนย์รวมบริการขนส่ง
+                    ไม่ได้เป็นเจ้าของหรือดำเนินงานโดยบริษัทขนส่งใดโดยตรง</p>
+                <p data-i18n="disclaimer.purpose">เว็บไซต์นี้ ทำมาเพื่อ อำนวยความสะดวกให้ลูกค้าเช็คเลขพัสดุ เท่านั้น.
+                </p>
                 <p>รายชื่อผู้ให้บริการขนส่งแสดงเพื่อการอ้างอิง ลูกค้าจะถูกนำไปยังเว็บไซต์ของแต่ละบริษัท</p>
             </div>
 
             <div class="®️copyrightBy-Div_Nat">
-                <p>&copy; 2023  Express Center. All rights reserved.</p>
+                <p>&copy; 2023 Express Center. All rights reserved.</p>
                 <div class="visitor-counter" style="margin-top:8px; font-size:0.95rem; color: rgba(255,255,255,0.9);">
                     <span data-i18n="visitors.label">ผู้เข้าชมเว็บไซต์:</span>
                     <span id="visitorCount">—</span>
@@ -329,8 +464,3 @@
 
 
 </html>
-
-
-
-
-

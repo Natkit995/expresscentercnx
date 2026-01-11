@@ -56,75 +56,65 @@ document.addEventListener('DOMContentLoaded', function () {
     const initialLang = localStorage.getItem('lang') || 'th';
     setLanguage(initialLang);
 
-    // --- Visitor Counter Logic (uses CountAPI: https://countapi.xyz) ---
+    // --- Visitor Counter Logic (uses api.counterapi.dev) ---
     (function initVisitorCounter() {
         const visitorCountElement = document.getElementById('visitorCount');
         if (!visitorCountElement) return;
 
-        const NAMESPACE = 'calutater';
-        const KEY = 'site_visitors';
-        const API_BASE = 'https://api.countapi.xyz';
-        const DAY_KEY = 'calutater_last_visit_date';
+        const NAMESPACE = 'express-center-main';
+        const KEY = 'visits';
+        const DAY_KEY = 'express_center_last_visit_date';
 
         function setDisplay(value) {
-            visitorCountElement.innerText = typeof value === 'number' ? value.toLocaleString() : '—';
+            visitorCountElement.innerText = (typeof value === 'number') ? value.toLocaleString() : '—';
         }
 
         async function getCount() {
             try {
-                const res = await fetch(`${API_BASE}/get/${NAMESPACE}/${KEY}`);
-                if (!res.ok) throw new Error('Failed to fetch');
-                const json = await res.json();
-                return typeof json.value === 'number' ? json.value : null;
+                const res = await fetch(`https://api.counterapi.dev/v1/${NAMESPACE}/${KEY}/`);
+                if (!res.ok) throw new Error('Failed to fetch count');
+                const data = await res.json();
+                return (data && typeof data.count === 'number') ? data.count : 0;
             } catch (e) {
-                console.error('getCount error', e);
+                console.error('Visitor Counter (get) error:', e);
                 return null;
             }
         }
 
         async function hitCount() {
             try {
-                const res = await fetch(`${API_BASE}/hit/${NAMESPACE}/${KEY}`);
-                if (!res.ok) throw new Error('Failed to hit');
-                const json = await res.json();
-                return typeof json.value === 'number' ? json.value : null;
+                const res = await fetch(`https://api.counterapi.dev/v1/${NAMESPACE}/${KEY}/up`);
+                if (!res.ok) throw new Error('Failed to increment count');
+                const data = await res.json();
+                return (data && typeof data.count === 'number') ? data.count : null;
             } catch (e) {
-                console.error('hitCount error', e);
+                console.error('Visitor Counter (hit) error:', e);
                 return null;
             }
         }
 
-        // Increment at most once per day per browser
         (async function () {
-            setDisplay('…'); // loading
+            setDisplay('...');
             const today = new Date().toISOString().slice(0, 10);
-            const last = localStorage.getItem(DAY_KEY);
+            const lastVisit = localStorage.getItem(DAY_KEY);
 
-            if (last !== today) {
-                // try to increment
-                const val = await hitCount();
-                if (val !== null) {
-                    setDisplay(val);
+            if (lastVisit !== today) {
+                const newCount = await hitCount();
+                if (newCount !== null) {
+                    setDisplay(newCount);
                     localStorage.setItem(DAY_KEY, today);
-                    return;
+                } else {
+                    const current = await getCount();
+                    setDisplay(current);
                 }
+            } else {
+                const current = await getCount();
+                setDisplay(current);
             }
-
-            // fallback: just get the current count
-            const val = await getCount();
-            if (val !== null) {
-                setDisplay(val);
-                return;
-            }
-
-            // final fallback: show dash
-            setDisplay(null);
         })();
     })();
 });
-
-// Dropdown behavior: toggle on click for small screens, close on outside click
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const termsToggle = document.getElementById('termsToggle');
     const termsMenu = document.getElementById('termsMenu');
     if (!termsToggle || !termsMenu) return;
@@ -193,6 +183,32 @@ const translations = {
         'feature.safe.desc': 'มั่นใจได้ด้วยระบบติดตาม GPS และประกันสินค้าเสียหาย',
         'feature.support.title': 'บริการลูกค้า ในทุกขั้นตอน',
         'feature.support.desc': 'มีทีมงานซัพพอร์ตพร้อมช่วยเหลือและตอบคำถามของคุณตลอดเวลา',
+        'packing.title': 'วิธีแพ็คพัสดุอย่างปลอดภัย',
+        'packing.desc': '4 ขั้นตอนง่ายๆ เพื่อให้พัสดุของคุณถึงปลายทางอย่างปลอดภัย',
+        'packing.step1.title': 'เลือกกล่องที่เหมาะสม',
+        'packing.step1.desc': 'ใช้กล่องที่แข็งแรงและขนาดพอดีกับสินค้า ไม่ควรเหลือที่ว่างมากเกินไป',
+        'packing.step2.title': 'ห่อหุ้มกันกระแทก',
+        'packing.step2.desc': 'ห่อสินค้าด้วยบับเบิ้ลหรือวัสดุกันกระแทก โดยเฉพาะสินค้าแตกหักง่าย',
+        'packing.step3.title': 'ปิดกล่องให้แน่นหนา',
+        'packing.step3.desc': 'ปิดผนึกกล่องด้วยเทปกาวคุณภาพดี แปะให้เป็นรูปตัว H ทั้งด้านบนและล่าง',
+        'packing.step4.title': 'จ่าหน้าชัดเจน',
+        'packing.step4.desc': 'เขียนชื่อ-ที่อยู่ ผู้รับและผู้ส่งให้ชัดเจน พร้อมเบอร์โทรศัพท์ที่ติดต่อได้',
+        'packing.large.title': 'วิธีแพ็คของชิ้นใหญ่ (เฟอร์นิเจอร์/เครื่องใช้ไฟฟ้า)',
+        'packing.large.desc': 'เทคนิคการแพ็คสินค้าขนาดใหญ่ให้ปลอดภัยตลอกการขนส่ง',
+        'packing.large.step1.title': 'ถอดชิ้นส่วน',
+        'packing.large.step1.desc': 'ถอดชิ้นส่วนที่ยื่นออกมาได้ เช่น ขาโต๊ะ หรือล้อ เพื่อลดขนาดและป้องกันการหัก',
+        'packing.large.step2.title': 'ห่อหุ้มมุมและขอบ',
+        'packing.large.step2.desc': 'ใช้กระดาษลูกฟูกหรือโฟมกันกระแทกหุ้มตามมุมและขอบต่างๆ ให้หนาแน่น',
+        'packing.large.step3.title': 'รัดให้แน่นหนา',
+        'packing.large.step3.desc': 'ใช้ฟิล์มยืดพันรอบตัวสินค้าให้แน่น เพื่อป้องกันรอยขีดข่วนและฝุ่น',
+        'packing.fruit.title': 'วิธีแพ็คผลไม้สด',
+        'packing.fruit.desc': 'ส่งผลไม้ให้ถึงมือผู้รับอย่างสดใหม่ ไม่ช้ำ ไม่เน่าเสีย',
+        'packing.fruit.step1.title': 'คัดเลือกผลไม้',
+        'packing.fruit.step1.desc': 'เลือกผลที่สดใหม่ ผิวสวย ไม่สุกงอมจนเกินไป และไม่มีรอยช้ำ',
+        'packing.fruit.step2.title': 'ห่อรายผล',
+        'packing.fruit.step2.desc': 'ห่อผลไม้ทีละลูกด้วยโฟมตาข่าย เพื่อลดการกระทบกระเทือน',
+        'packing.fruit.step3.title': 'เรียงใส่กล่องเจาะรู',
+        'packing.fruit.step3.desc': 'เรียงใส่กล่องผลไม้ที่มีรูระบายอากาศ ไม่ควรซ้อนกันเกิน 2-3 ชั้น',
         'cta.title': 'พร้อมเริ่มส่งของกับเราหรือยัง?',
         'cta.desc': '',
         'cta.button': 'แอดไลน์สอบถามราคาแต่ละขนส่ง',
@@ -233,6 +249,32 @@ const translations = {
         'feature.safe.desc': '',
         'feature.support.title': 'Customer Support',
         'feature.support.desc': 'Our support team is ready to help and answer your questions',
+        'packing.title': 'How to Pack Safely',
+        'packing.desc': '4 simple steps to ensure your parcel arrives safely',
+        'packing.step1.title': 'Choose the Right Box',
+        'packing.step1.desc': 'Use a sturdy box that fits your items well. Avoid excessive empty space.',
+        'packing.step2.title': 'Wrap with Cushioning',
+        'packing.step2.desc': 'Wrap items with bubble wrap or cushioning material, especially for fragile items.',
+        'packing.step3.title': 'Seal Tightly',
+        'packing.step3.desc': 'Seal the box with high-quality tape. Tape in an H-shape on both top and bottom.',
+        'packing.step4.title': 'Clear Labeling',
+        'packing.step4.desc': 'Write sender and receiver names/addresses clearly, including contact numbers.',
+        'packing.large.title': 'Packing Large Items (Furniture/Appliances)',
+        'packing.large.desc': 'Techniques for safely transporting large goods.',
+        'packing.large.step1.title': 'Disassemble',
+        'packing.large.step1.desc': 'Remove protruding parts like legs or wheels to reduce size and prevent breakage.',
+        'packing.large.step2.title': 'Protect Edges',
+        'packing.large.step2.desc': 'Cover corners and edges with corrugated cardboard or foam padding.',
+        'packing.large.step3.title': 'Wrap Tightly',
+        'packing.large.step3.desc': 'Wrap the entire item with stretch film to prevent scratches and dust.',
+        'packing.fruit.title': 'Packing Fresh Fruit',
+        'packing.fruit.desc': 'Deliver fresh fruit without bruising or spoiling.',
+        'packing.fruit.step1.title': 'Select Fresh Fruit',
+        'packing.fruit.step1.desc': 'Choose fresh fruits with good skin, not overripe, and no bruises.',
+        'packing.fruit.step2.title': 'Individual Wrap',
+        'packing.fruit.step2.desc': 'Wrap each fruit individually with foam mesh to reduce impact.',
+        'packing.fruit.step3.title': 'Ventilated Box',
+        'packing.fruit.step3.desc': 'Arranged in a ventilated fruit box. Do not stack more than 2-3 layers.',
         'cta.title': 'Ready to ship with us?',
         'cta.desc': 'Request a quote or consult our experts for free',
         'cta.button': 'Request a Quote',
@@ -368,27 +410,17 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
- // Mobile nav toggle for Terms page
-        document.addEventListener('DOMContentLoaded', function () {
-            const toggle = document.querySelector('.nav-toggle');
-            const nav = document.querySelector('.nav-links');
-            if (!toggle || !nav) return;
-            toggle.addEventListener('click', function () {
-                const open = nav.classList.toggle('open');
-                this.setAttribute('aria-expanded', open ? 'true' : 'false');
-            });
-            // Close nav when clicking a link
-            nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
-        });
+// Mobile nav toggle for Terms page
 
-        document.addEventListener('DOMContentLoaded', () => {
+
+document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.getElementById('hamburger-menu');
     const navLinks = document.querySelector('.nav-links');
 
     hamburger.addEventListener('click', () => {
         // สลับคลาส active เพื่อแสดง/ซ่อน เมนู
         navLinks.classList.toggle('active');
-        
+
         // (ลูกเล่นเพิ่มเติม) เปลี่ยนไอคอนจาก ขีดๆ เป็น กากบาท (X)
         const icon = hamburger.querySelector('i');
         if (navLinks.classList.contains('active')) {
